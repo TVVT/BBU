@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		h1{text-align: center;}
+		#bug_form div{margin: 10px 0 0 30px;}
+		#bug_form div label{width: 80px;display: inline-block;text-align: right;}
+		#submit{margin: 10px 0 0 80px;}
+		#bug_form input{line-height: 18px;}
+	</style>
+<body>
+	<h1>Bug提交:</h1>
+	<form id="bug_form" action="../bugReceiver" method="POST">
+		<div><label for="username">昵称：</label><input id="username" name="username" type="text"></div>
+		<div><label for="bugdetail">bug描述：</label><textarea id="bugdetail" name="bugdetail" type="text"></textarea></div>
+		<div><label for="bugimg">上传截图：</label><input id="bugimg" name="bugimg" type="file"></div>
+		<!-- 浏览器信息 -->
+		<input id="browserinfo" name="browserinfo" type="hidden">
+		<input id="weburl" name="weburl" type="hidden">	
+		<div><input id="submit" type="submit"></div>
+	</form>
+</body>
+	<!-- todo 验证表单 -->
+	<script type="text/javascript">
+		(function(window){
+			var browserinfo = document.getElementById("browserinfo"),
+				weburl = document.getElementById("weburl");
+			browserinfo.value = navigator.userAgent;
+			var url = window.location.href;
+			weburl.value = url.indexOf("?") != -1?url.substring(url.indexOf("?")+5,url.length):"";
+		})(window);
+	</script>
+</html>

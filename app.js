@@ -2,6 +2,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var bbu = require('./controller/bbu');
 var app = express();
 
 // all environments
@@ -29,7 +30,7 @@ app.use(app.router);
 // bug列表首页 
 // app.get('/',bbu.index);
 // bug提交链接
-// app.post('/bbuUpload');
+app.post('/bugReceiver',bbu.bugReceiver);
 // 获取BBU插件
 app.get('/getBBU',bbu.getBBU);
 
