@@ -33,9 +33,10 @@ exports.bugReceiver = function(req,res){
 			webUrl:req.body.weburl,
 			priority:0//优先级暂时都是0 TODO
 		}
-
-		
-		res.send(bugData);
+		var newBug = new Model_bbu(bugData);
+		newBug.create(function(data){
+			res.send(data);
+		});
 	}else{
 		res.send("上传失败！");
 	}

@@ -1,6 +1,6 @@
 var mysql = require('mysql')
 	,dbConnInfo = {
-		'host': 'localhost',
+		'host': '127.0.0.1',
 		'database': 'bbu',
 		'port': '3306',
 		'user': 'root',
