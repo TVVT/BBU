@@ -13,7 +13,7 @@
 	</style>
 <body>
 	<h1>Bug提交:</h1>
-	<form id="bug_form" action="../bugReceiver" method="POST">
+	<form id="bug_form" enctype="multipart/form-data" action="../bugReceiver" method="POST">
 		<div><label for="username">昵称：</label><input id="username" name="username" type="text"></div>
 		<div><label for="bugdetail">bug描述：</label><textarea id="bugdetail" name="bugdetail" type="text"></textarea></div>
 		<div><label for="bugimg">上传截图：</label><input id="bugimg" name="bugimg" type="file"></div>
