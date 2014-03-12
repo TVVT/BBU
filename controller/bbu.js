@@ -4,17 +4,15 @@ var fs = require('fs');
 var path = require('path');
 
 //列表首页 render使用angularjs 接口提供数据
-exports.index = function(req, res) {
-	req.send("123");
+exports.BBUList = function(req, res) {
+	res.redirect('../webAPP/BBU/index.html');
 }
 
 //获取BBU
 exports.getBBU = function(req, res) {
-
 	var renderData = {
 		'baseUrl': settings.baseUrl
 	}
-
 	res.render('BBU/getBBU.ejs', renderData);
 }
 
@@ -62,9 +60,20 @@ exports.bugReceiver = function(req, res) {
 			};
 		});
 	}else{
-		res.send("上传失败！");
+		res.send("昵称和bug信息必填！");
 	}
 
+}
+
+//API 返回分页数据
+exports.getBugsByPageId = function(req,res){
+
+	var pageId = req.body.pageId,
+		pageSize = req.body.pageSize;
+
+	Model_bbu.getBugsByPageId(pageId,pageSize,function(data){
+		res.send(data);
+	})
 }
 
 //检查路径是否存在 不存在的话就新建一个 仅仅适用于本项目～
@@ -82,3 +91,6 @@ var checkDir = function(){
 		}
 	}
 }
+
+
+

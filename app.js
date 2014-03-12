@@ -27,12 +27,18 @@ if ('development' == app.get('env')) {
 
 app.use(app.router);
 
-// bug列表首页 
-// app.get('/',bbu.index);
+
+
 // bug提交链接
 app.post('/bugReceiver',bbu.bugReceiver);
 // 获取BBU插件
 app.get('/getBBU',bbu.getBBU);
+// bug列表首页 
+app.get('/BBUList',bbu.BBUList);
+app.get('/',bbu.BBUList);
+
+//APIS
+app.post('/getBugsByPageId',bbu.getBugsByPageId);
 
 //404页面 希望能用服务器去解决这件事情 因为这里还把css js等静态文件过滤了一下 不好不好
 // app.get('/*',common.pageNotFound);

@@ -33,3 +33,10 @@ Bug.prototype.create = function(callback){
 		return callback(data);
 	});
 }
+
+Bug.getBugsByPageId = function(pageId,pageSize,callback){
+	conn = db.mysql.createConnection(db.dbConnInfo);
+	db.select_with_count(pageId*pageSize,pageSize,table_name,function(data){
+		return callback(data);
+	});
+}

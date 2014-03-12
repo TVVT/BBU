@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "express": "3.3.5",
-    "ejs": "*",
-    "mysql":"*",
-    "socketio"
+    "ejs": "0.8.x",
+    "mysql":"2.0.0-alpha8",
+    "socketio":"*"
   }
 }
