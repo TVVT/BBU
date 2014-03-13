@@ -85,7 +85,7 @@ exports.getBugById = function(req,res){
 
 //检查路径是否存在 不存在的话就新建一个 仅仅适用于本项目～
 var checkDir = function(){
-	var rootPath = './public/media/bbu/',
+	var rootPath = './public/media/bbu',
 		date = new Date();
 	if (fs.existsSync(rootPath + '/' + date.getFullYear().toString() + '/' + (date.getMonth() + 1).toString())) {
 		return;

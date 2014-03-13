@@ -4,7 +4,7 @@ var mysql = require('mysql')
 		'database': 'bbu',
 		'port': '3306',
 		'user': 'root',
-		'password': ''
+		'password': 'root'
 	};
 var conn;
 
@@ -100,7 +100,8 @@ exports.select_by_title = function(title,info,table_name,callback){
 //查询数据段 begin 开始id length 长度
 exports.select_with_count = function(begin,length,table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
-	var cmd = "SELECT * FROM " + table_name + " LIMIT " + begin +","+length;
+	var cmd = "SELECT * FROM " + table_name + " ORDER BY id DESC LIMIT " + begin +","+length;
+	console.log(cmd);
 	conn.query(cmd,function(err,rs,fields){
 		conn.end();
 		if (err) {
