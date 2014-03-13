@@ -48,7 +48,7 @@ exports.bugReceiver = function(req, res) {
 		var bugData = {
 			userName:req.body.username,
 			bugDetail:req.body.bugdetail,
-			picUrl:targetPath.replace(/.\/public\//,""),
+			picUrl:targetPath?targetPath.replace(/.\/public\//,""):'',
 			browserInfo:req.body.browserinfo,
 			webUrl:req.body.weburl,
 			priority:0//优先级暂时都是0 TODO
