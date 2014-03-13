@@ -42,6 +42,9 @@
 						pageSize: pageSize
 					}
 				}).success(function(data, status, headers, config) {
+					for(var i = 0;i<data.length;i++){
+						data[i].ctime = new Date(parseInt(data[i].ctime) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+					}
 					bugService.bugs = data;
 				}).error(function(data, status, headers, config) {
 					throw "访问数据错误！";
@@ -78,6 +81,7 @@
 						bugId: bugId
 					}
 				}).success(function(data, status, headers, config) {
+					data[0].ctime = new Date(parseInt(data[0].ctime) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
 					bugService.bug = data[0];
 				}).error(function(data, status, headers, config) {
 					throw "访问数据错误！";

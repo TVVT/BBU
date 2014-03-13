@@ -1,0 +1,16 @@
+body{
+	font-family: 'sans-serif','微软雅黑';
+	background-color: #ffffff;
+}
+#title{
+	margin: 0 auto;
+	font-size: 80px;
+	text-align: center;
+	font-weight: bold;
+}
+#bbu-list li{
+	line-height: 60px;
+	height: 60px;
+	display: block;
+	float: left;
+}
