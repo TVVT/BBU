@@ -16,10 +16,13 @@ a{cursor: pointer;}
 #title{text-align: center;font-size: 50px;font-weight: bold;line-height: 80px;}
 #container{width: 1000px;margin: 20px auto; background: rgba(44,71,98,1);padding: 10px;border-radius: 10px;font-weight: normal;font-size: 14px;}
 
+
 /* list */
 #bbu-list li{margin-bottom: 20px;}
 .bbu-info .bug-list-detail{background-color:#fff;border-radius: 6px;margin-bottom:4px; padding: 10px 10px 10px 10px;color: #444;}
+.bug-list-time{margin-left: 40px;}
 
 /* bug detail */
 .bug-img{max-width: 1000px;border-radius: 8px;margin-top:10px; }
 .bug-detail{background-color:#fff;border-radius: 6px;margin-bottom:4px; padding: 10px 10px 10px 10px;color: #444;}
+.time{margin-left: 40px;}
