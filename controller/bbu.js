@@ -48,7 +48,7 @@ exports.bugReceiver = function(req, res) {
 		var bugData = {
 			userName:req.body.username,
 			bugDetail:req.body.bugdetail,
-			picUrl:targetPath,
+			picUrl:targetPath.replace(/.\/public\//,""),
 			browserInfo:req.body.browserinfo,
 			webUrl:req.body.weburl,
 			priority:0//优先级暂时都是0 TODO
@@ -72,6 +72,13 @@ exports.getBugsByPageId = function(req,res){
 		pageSize = req.body.pageSize;
 
 	Model_bbu.getBugsByPageId(pageId,pageSize,function(data){
+		res.send(data);
+	})
+}
+//API 返回bug数据
+exports.getBugById = function(req,res){
+	var bugId = req.body.bugId;
+	Model_bbu.getBugById(bugId,function(data){
 		res.send(data);
 	})
 }

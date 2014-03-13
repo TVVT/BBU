@@ -53,7 +53,6 @@ exports.delete_by_id = function(ids,table_name){
 //更新一条数据
 exports.update_by_id = function(update_data,id,table_name){
 	conn = mysql.createConnection(dbConnInfo);
-
 	var cmd = "UPDATE " + table_name+" set";
 	for(var key in update_data){
 		cmd+=(" "+key+"='"+update_data[key]+"',");
@@ -71,16 +70,16 @@ exports.update_by_id = function(update_data,id,table_name){
 }
 
 //根据id查询数据
-exports.select_by_id = function(id,table_name){
+exports.select_by_id = function(id,table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
-	var cmd = "SELECT * FROM " + table_name + " WHERE id= " + id;
-
+	var cmd = "SELECT * FROM " + table_name + " WHERE id= " + "'" + id + "'";
 	conn.query(cmd,function(err,rs,fields){
 		conn.end();
 		if (err) {
+			console.log(err);
 			return false;
 		};
-		return rs;
+		return callback(rs);
 	})
 }
 
@@ -102,7 +101,6 @@ exports.select_by_title = function(title,info,table_name,callback){
 exports.select_with_count = function(begin,length,table_name,callback){
 	conn = mysql.createConnection(dbConnInfo);
 	var cmd = "SELECT * FROM " + table_name + " LIMIT " + begin +","+length;
-
 	conn.query(cmd,function(err,rs,fields){
 		conn.end();
 		if (err) {

@@ -17,7 +17,6 @@ function Bug(bug){
 module.exports = Bug;
 
 Bug.prototype.create = function(callback){
-	conn = db.mysql.createConnection(db.dbConnInfo);
 	ctime = new Date();
 	ctime = Math.ceil(ctime.getTime()/1000);
 	data = {
@@ -35,8 +34,13 @@ Bug.prototype.create = function(callback){
 }
 
 Bug.getBugsByPageId = function(pageId,pageSize,callback){
-	conn = db.mysql.createConnection(db.dbConnInfo);
 	db.select_with_count(pageId*pageSize,pageSize,table_name,function(data){
 		return callback(data);
 	});
+}
+
+Bug.getBugById = function(bugId,callback){
+	db.select_by_id(bugId,table_name,function(data){
+		return callback(data);
+	})
 }

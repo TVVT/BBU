@@ -1,0 +1,15 @@
+			<ul id="bbu-list">
+				<li  ng-repeat="li in getBugs()">
+					<a ng-href="http://localhost:4000/webAPP/BBU/index.html#/b{{li.id}}">
+						<article>
+							<header><span class="username" ng-bind="li.username"></span><span class="time" ng-bind="li.ctime"></span></header>
+							<p class="bug-detail" ng-bind="li.bugdetail"></p>
+							<p class="browser-info" ng-bind="li.browserinfo"></p>
+							<p class="web-url" ng-bind="li.weburl"></p>
+						</article>
+					</a>
+				</li>
+			</ul>
+			<a id="next" ng-href="http://localhost:4000/webAPP/BBU/index.html#/p{{prevPage}}">上一页</a>
+			<a id="next" ng-href="http://localhost:4000/webAPP/BBU/index.html#/p{{nextPage}}">下一页</a>
+

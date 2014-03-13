@@ -1,0 +1,10 @@
+<article>
+<header>
+	<span class="username" ng-bind="bug.username"></span>
+	<span class="time" ng-bind="bug.ctime"></span>
+</header>
+<p class="bug-detail" ng-bind="bug.bugdetail"></p>
+<p class="browser-info" ng-bind="bug.browserinfo"></p>
+<p class="web-url" ng-bind="bug.weburl"></p>
+<img ng-src="http://localhost:4000/{{bug.picurl}}">
+</article>

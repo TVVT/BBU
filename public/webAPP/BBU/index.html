@@ -6,21 +6,13 @@
 	</head>
 	<body>
 		<div id="title">BBU列表</div>
-		<section id="bbu-list-wrapper" ng-controller="ListCtrl">
-			<ul id="bbu-list">
-				<a href="#" ng-repeat="li in getBugs()">
-					<li>
-						<article>
-							<header><span class="username" ng-bind="li.username"></span><span class="time" ng-bind="li.ctime"></span></header>
-							<p class="bug-detail" ng-bind="li.bugdetail"></p>
-							<p class="browser-info" ng-bind="li.browserinfo"></p>
-							<p class="web-url" ng-bind="li.weburl"></p>
-						</article>
-					</li>
-				</a>
-			</ul>
-		</section>
+			
+		<section id="container" ng-view>
+		</section>	
+			
+
 		<script src="./modules/angular.js"></script>
+		<script src="./modules/angular-route.js"></script>
 		<script src="./controllers/main.js"></script>
 	</body>
 </html>
