@@ -28,7 +28,7 @@
 	].join(';');
 
 	//i.src = 'http://inscake.github.io/YHD-UI-Bookmarklet/imageUpload/imageUpload_page.html';
-	i.src = 'http://localhost:4000/htmls/bbu.html?url='+url;
+	i.src = 'http://192.168.112.94:4000/htmls/bbu.html?url='+url;
 	i.onload = function () {
 		i.focus();
 	};
