@@ -8,8 +8,12 @@
 	}
 
 	clickHandler = function () {
-		d.parentNode && document.body.removeChild(d);
-		c.removeEventListener('click', clickHandler);
+		d.parentNode && body.removeChild(d);
+		if (isIE) {
+			c.detachEvent('click',clickHandler);
+		}else{
+			c.removeEventListener('click', clickHandler);
+		}
 		d = i = c = null;
 		delete window.bbu;
 	}

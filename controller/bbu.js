@@ -23,10 +23,10 @@ exports.bugDetail = function(req, res) {
 
 //收集bug信息 存入数据库
 exports.bugReceiver = function(req, res) {
-
+	console.log(req.files.bugimg.type);
 	if (req.files.bugimg.name) {
 		checkDir();
-		if (req.files.bugimg.type == "image/jpeg" || req.files.bugimg.type == "image/png" || req.files.bugimg.type == "image/gif") {
+		if (req.files.bugimg.type == "image/jpeg" || req.files.bugimg.type == "image/png" || req.files.bugimg.type == "image/gif" || req.files.bugimg.type == "image/x-png" || req.files.bugimg.type == "image/pjpeg") {
 			var tmpPath = req.files.bugimg.path;
 			var date = new Date();
 			var picRan = date.getTime() + Math.floor(Math.random() * 100000).toString();
