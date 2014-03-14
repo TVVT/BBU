@@ -1,10 +1,9 @@
 ;
 (function (window) {
 	var d, i, c, clickHandler,url=window.location.href;
+	var isIE = (document.all && window.ActiveXObject && !window.opera) ? true : false;
+	var body = document.body||document.getElementsByTagName("body")[0];
 	if (window.bbu) {
-		return false;
-	}
-	if (!window.FormData) {
 		return false;
 	}
 
@@ -55,7 +54,11 @@
 		, 'font-size:12px'
 		, ''
 	].join(';');
-	c.addEventListener('click', clickHandler);
+	if (isIE) {
+		c.attachEvent("onclick",clickHandler);
+	}else{
+		c.addEventListener('click', clickHandler);
+	}
 
 	d = document.createElement('div');
 	d.style.cssText = [
@@ -76,6 +79,6 @@
 	].join(';');
 	d.appendChild(c);
 	d.appendChild(i);
-	document.body.appendChild(d);
+	body.appendChild(d);
 	window.bbu = d;
 })(window);
