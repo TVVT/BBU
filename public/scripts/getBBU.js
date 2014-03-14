@@ -14,8 +14,8 @@
 		}else{
 			c.removeEventListener('click', clickHandler);
 		}
-		d = i = c = null;
-		delete window.bbu;
+		bbu = d = i = c = null;
+		// delete window.bbu;
 	}
 
 	i = document.createElement('iframe');
