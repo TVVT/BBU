@@ -4,7 +4,7 @@ var mysql = require('mysql')
 		'database': 'bbu',
 		'port': '3306',
 		'user': 'root',
-		'password': ''
+		'password': 'root'
 	};
 var conn;
 
