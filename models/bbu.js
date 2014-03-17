@@ -12,6 +12,9 @@ function Bug(bug){
 	this.priority = bug.priority;
 	this.browserInfo = bug.browserInfo;
 	this.webUrl = bug.webUrl;
+	this.status = bug.status;
+	this.email = bug.email;
+	this.screenwidth = bug.screenwidth;
 }
 
 module.exports = Bug;
@@ -26,6 +29,9 @@ Bug.prototype.create = function(callback){
 		'priority' : this.priority,
 		'browserinfo' : this.browserInfo,
 		'weburl': this.webUrl,
+		'status': this.status,
+		'email':this.email,
+		'screenwidth':this.screenwidth,
 		'ctime':ctime
 	};
 	db.insert_one(data,table_name,function(data){
@@ -43,4 +49,10 @@ Bug.getBugById = function(bugId,callback){
 	db.select_by_id(bugId,table_name,function(data){
 		return callback(data);
 	})
+}
+
+Bug.getBugsByPageIdAndStatusId = function(pageId,pageSize,title,statusId,callback){
+	db.select_with_count_by_condition(pageId*pageSize,pageSize,title,statusId,table_name,function(data){
+		return callback(data);
+	});
 }

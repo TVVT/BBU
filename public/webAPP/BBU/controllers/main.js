@@ -32,18 +32,26 @@
 	//bugs list controller
 	BBU.controller('ListCtrl', ['$scope', 'bugService', '$routeParams', '$http',
 		function ListCtrl($scope, bugService, $routeParams, $http) {
-			$scope.pageId = $routeParams.id
-			$scope.getBugsFromRemote = function(pageId) {
+			$scope.pageId = $routeParams.pid;
+			$scope.statusId = $routeParams.sid;
+			$scope.getBugsFromRemote = function(pageId,sid) {
 				$http({
 					method: 'POST',
 					url: '/getBugsByPageId',
 					data: {
 						pageId: pageId - 1,
-						pageSize: pageSize
+						pageSize: pageSize,
+						statusId: sid
 					}
 				}).success(function(data, status, headers, config) {
 					for(var i = 0;i<data.length;i++){
 						data[i].ctime = new Date(parseInt(data[i].ctime) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+						switch(data[i].status){
+							case 1:data[i].status = "未处理";break;
+							case 2:data[i].status = "正在处理";break;
+							case 3:data[i].status = "已处理";break;
+							default:data[i].status = "未处理";break;
+						}
 					}
 					bugService.bugs = data;
 				}).error(function(data, status, headers, config) {
@@ -53,10 +61,10 @@
 			$scope.getBugs = function() {
 				return bugService.getBugs();
 			}
-			$scope.nextPage = parseInt($scope.pageId)+1;
-			$scope.prevPage = parseInt($scope.pageId)-1;
+			$scope.nextPage = 's'+$scope.statusId+'/p'+(parseInt($scope.pageId)+1);
+			$scope.prevPage = 's'+$scope.statusId+'/p'+(parseInt($scope.pageId)-1);
 			//初始化数据
-			$scope.getBugsFromRemote($scope.pageId);
+			$scope.getBugsFromRemote($scope.pageId,$scope.statusId);
 		}
 	])
 
@@ -82,6 +90,12 @@
 					}
 				}).success(function(data, status, headers, config) {
 					data[0].ctime = new Date(parseInt(data[0].ctime) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+					switch(data[0].status){
+							case 1:data[0].status = "未处理";break;
+							case 2:data[0].status = "正在处理";break;
+							case 3:data[0].status = "已处理";break;
+							default:data[0].status = "未处理";break;
+						}
 					bugService.bug = data[0];
 				}).error(function(data, status, headers, config) {
 					throw "访问数据错误！";
@@ -104,12 +118,12 @@
 					templateUrl: '../BBU/bugDetail.html',
 					controller: 'BugDetail'
 				})
-				.when('/p:id', {
+				.when('/s:sid/p:pid',{
 					templateUrl: '../BBU/bugList.html',
 					controller: 'ListCtrl'
 				})
 				.otherwise({
-					redirectTo: '/p1'
+					redirectTo: '/s1/p1'
 				});
 		}
 	])

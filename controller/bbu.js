@@ -51,6 +51,9 @@ exports.bugReceiver = function(req, res) {
 			picUrl:targetPath?targetPath.replace(/.\/public\//,""):'',
 			browserInfo:req.body.browserinfo,
 			webUrl:req.body.weburl,
+			email:req.body.email,
+			screenwidth:req.body.screenwidth,
+			status:1,//1代表未处理 2代表正在处理 3代表处理完毕
 			priority:0//优先级暂时都是0 TODO
 		}
 		var newBug = new Model_bbu(bugData);
@@ -69,11 +72,24 @@ exports.bugReceiver = function(req, res) {
 exports.getBugsByPageId = function(req,res){
 
 	var pageId = req.body.pageId,
-		pageSize = req.body.pageSize;
+		pageSize = req.body.pageSize,
+		statusId = req.body.statusId,
+		titleName = 'status';
+	switch(statusId){
+		case '0'://全部
+			Model_bbu.getBugsByPageId(pageId,pageSize,function(data){
+				res.send(data);
+			})
+			break;
+		case '4'://搜索
+			break;
+		default:
+			Model_bbu.getBugsByPageIdAndStatusId(pageId,pageSize,titleName,statusId,function(data){
+				res.send(data);
+			})	
+	}
 
-	Model_bbu.getBugsByPageId(pageId,pageSize,function(data){
-		res.send(data);
-	})
+	
 }
 //API 返回bug数据
 exports.getBugById = function(req,res){

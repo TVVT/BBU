@@ -15,11 +15,13 @@
 	<h1>Bug提交:</h1>
 	<form id="bug_form" enctype="multipart/form-data" action="../bugReceiver" method="POST">
 		<div><label for="username">昵称：</label><input id="username" name="username" type="text"></div>
+		<div><label for="email">Email：</label><input id="email" name="email" type="text"></div>
 		<div><label for="bugdetail">bug描述：</label><textarea id="bugdetail" name="bugdetail" type="text"></textarea></div>
 		<div><label for="bugimg">上传截图：</label><input id="bugimg" name="bugimg" type="file"></div>
 		<!-- 浏览器信息 -->
 		<input id="browserinfo" name="browserinfo" type="hidden">
 		<input id="weburl" name="weburl" type="hidden">	
+		<input type="hidden" name="screenwidth" id="screenwidth">
 		<div><input id="submit" type="submit"></div>
 	</form>
 </body>
@@ -27,10 +29,27 @@
 	<script type="text/javascript">
 		(function(window){
 			var browserinfo = document.getElementById("browserinfo"),
-				weburl = document.getElementById("weburl");
+				weburl = document.getElementById("weburl"),
+				screenwidth = document.getElementById("screenwidth"),
+				submit = document.getElementById("submit"),
+				username = document.getElementById("username"),
+				email = document.getElementById("email");
 			browserinfo.value = navigator.userAgent;
 			var url = window.location.href;
-			weburl.value = url.indexOf("?") != -1?url.substring(url.indexOf("?")+5,url.length):"";
+			var weburlLastIndex = url.indexOf("&&"); 
+			weburl.value = url.indexOf("?") != -1?url.substring(url.indexOf("?")+5,weburlLastIndex):"";
+			screenwidth.value = url.indexOf("&&")!=-1?url.substring(url.indexOf("&&")+14,url.length):"";
+
+			//对用户名和email做缓存
+			if (localStorage) {
+				username.value = localStorage.username;
+				email.value = localStorage.email;
+				submit.onclick = function(){
+					localStorage.username = username.value?username.value:"";
+					localStorage.email = email.value?email.value:"";
+				}
+			};
+			
 		})(window);
 	</script>
 </html>

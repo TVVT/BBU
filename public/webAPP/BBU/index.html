@@ -3,17 +3,25 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>BBU列表</title>
-		<link rel="stylesheet" href="./style/base.css">
+		<link rel="stylesheet" href="http://localhost:4000/style/base.css">
 	</head>
 	<body>
-		<div id="title">BBU列表</div>
-			
+		<div id="header">
+			<div class="container">
+				<input type="text" placeholder="搜索bug的id（暂时未实现）" class="search">
+				<span class="title">BBU列表</span>
+			</div>
+			<div class="user-box">
+				<a href="http://localhost:4000/login">登录</a>
+				<a href="http://localhost:4000/reg">注册</a>
+			</div>
+		</div>
 		<section id="container" ng-view>
 		</section>	
 			
 
 		<script src="./modules/angular.js"></script>
-		<script src="./modules/angular-route.js"></script>
+		<!-- // <script src="./modules/angular-route.js"></script> -->
 		<script src="./controllers/main.js"></script>
 	</body>
 </html>

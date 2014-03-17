@@ -4,7 +4,7 @@ var mysql = require('mysql')
 		'database': 'bbu',
 		'port': '3306',
 		'user': 'root',
-		'password': 'root'
+		'password': ''
 	};
 var conn;
 
@@ -112,18 +112,32 @@ exports.select_with_count = function(begin,length,table_name,callback){
 	})
 }
 
+//查询数据段 begin 开始id length 长度 title 限制
+exports.select_with_count_by_condition = function(begin,length,title,value,table_name,callback){
+	conn = mysql.createConnection(dbConnInfo);
+	var cmd = "SELECT * FROM " + table_name + " WHERE "+title+"="+value+" ORDER BY id DESC LIMIT " + begin +","+length;
+	console.log(cmd);
+	conn.query(cmd,function(err,rs,fields){
+		conn.end();
+		if (err) {
+			console.log(err);
+			return false;
+		};
+		return callback(rs);
+	})
+}
+
 //自由query 给用户自己写query的东东 query是查询字符串
-exports.query = function(query){
+exports.query = function(query,callback){
 	conn = mysql.createConnection(dbConnInfo);
 	conn.query(query,function(err,rs,fields){
+		conn.end();
 		if (err) {
 			console.log("error:"+err)
 			return false;
 		};
-		console.log("result:"+rs)
-		return rs;
+		return callback(rs);
 	})
-	conn.end();
 }
 
 exports.get_count = function(table_name,callback){

@@ -1,5 +1,5 @@
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;padding:0;}
-body{height:100%;font-size: 14px;color:#f9f9f9;font-family: Microsoft Yahei;background:#2c4762 url(img/bg.png) repeat-x;}
+body{height:100%;font-size: 14px;color:#f9f9f9;font-family: Microsoft Yahei;background:#2c4762 url(../images/bg.png) repeat-x;}
 html{height:100%;}
 table {border-collapse:collapse;border-spacing:0;}
 fieldset,img {border:0;}
@@ -7,22 +7,35 @@ address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:no
 ol,ul {list-style:none;}
 q:before,q:after {content:'';}
 a{text-decoration: none;color: #f9f9f9;}
-a:hover{text-decoration: underline;}
+a:hover{text-decoration: none;}
 a{cursor: pointer;}
 .clearfix{zoom:1;}
 .clearfix:after{content:".";height:0;visibility:hidden;display:block;clear:both;font-size: 0;}
 
 /* 公共样式 */
 #title{text-align: center;font-size: 50px;font-weight: bold;line-height: 80px;}
+#header{height: 40px;background-color: #2c4762;text-align: center;}
+#header .container{width: 1000px;height: 40px;display: inline-block;}
+#header .container .title{font-weight: bold;font-size: 18px;margin-left: -200px;line-height: 40px;}
+#header .container .search{width: 200px;line-height: 20px;float: left;height: 26px;border-radius: 15px;outline: none;border: none;text-indent: 10px;margin-top:5px;margin-left: 10px; }
+#header .user-box{float: right;display: inline-block; height: 40px;}
+#header .user-box a{display: inline-block; line-height: 40px;font-weight: normal;font-size:12px;padding: 0 10px;}
+#header .user-box a:hover{background-color: #000;}
+/*2c4762*/
 #container{width: 1000px;margin: 20px auto; background: rgba(44,71,98,1);padding: 10px;border-radius: 10px;font-weight: normal;font-size: 14px;}
+
 
 
 /* list */
 #bbu-list li{margin-bottom: 20px;}
 .bbu-info .bug-list-detail{background-color:#fff;border-radius: 6px;margin-bottom:4px; padding: 10px 10px 10px 10px;color: #444;}
 .bug-list-time{margin-left: 40px;}
+.bug-list-status{float: right;font-size: 12px;}
 
 /* bug detail */
 .bug-img{max-width: 1000px;border-radius: 8px;margin-top:10px; }
 .bug-detail{background-color:#fff;border-radius: 6px;margin-bottom:4px; padding: 10px 10px 10px 10px;color: #444;}
 .time{margin-left: 40px;}
+.bug-status{float: right;font-size: 12px;}
+.bug-detail-nav{}
+.bug-detail-nav a{display: inline-block; line-height: 50px;margin-right: 20px;}

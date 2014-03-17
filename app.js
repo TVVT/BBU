@@ -3,6 +3,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var bbu = require('./controller/bbu');
+var user = require('./controller/user');
 var app = express();
 
 // all environments
@@ -37,9 +38,17 @@ app.get('/getBBU',bbu.getBBU);
 app.get('/BBUList',bbu.BBUList);
 app.get('/',bbu.BBUList);
 
+
+// bug user登录页面
+app.get('/login',user.logIn);
+// bug user注册页面
+app.get('/reg',user.reg);
+
 //APIS
 app.post('/getBugsByPageId',bbu.getBugsByPageId);
 app.post('/getBugById',bbu.getBugById);
+app.post('/getLogin',user.getLogin);
+app.post('/getReg',user.getReg);
 
 //404页面 希望能用服务器去解决这件事情 因为这里还把css js等静态文件过滤了一下 不好不好
 // app.get('/*',common.pageNotFound);

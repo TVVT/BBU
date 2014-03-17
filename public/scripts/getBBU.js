@@ -1,6 +1,6 @@
 ;
 (function (window) {
-	var d, i, c, clickHandler,url=window.location.href;
+	var d, i, c, clickHandler,url=window.location.href,screenWidth = window.screen.width;
 	var isIE = (document.all && window.ActiveXObject && !window.opera) ? true : false;
 	var body = document.body||document.getElementsByTagName("body")[0];
 	if (window.bbu) {
@@ -31,7 +31,7 @@
 	].join(';');
 
 	//i.src = 'http://inscake.github.io/YHD-UI-Bookmarklet/imageUpload/imageUpload_page.html';
-	i.src = 'http://192.168.112.94:4000/htmls/bbu.html?url='+url;
+	i.src = 'http://localhost:4000/htmls/bbu.html?url='+url+'&&screenWidth='+screenWidth;
 	i.onload = function () {
 		i.focus();
 	};
