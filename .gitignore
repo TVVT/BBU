@@ -1,2 +1,5 @@
 public/media
 node_modules/
+
+#tmpfiles
+*.DS_Store

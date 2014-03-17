@@ -1,0 +1,206 @@
+/*bookmark.css*/
+*{margin: 0;padding: 0;}
+
+html{
+	color: #333;
+	background-color: #d9dee2;
+	background-image: -webkit-linear-gradient(top, #ebeef2, #d9dee2);
+	background-repeat: no-repeat; 
+	font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3","Micsoft YaHei";
+}
+
+h1{
+	text-align: center;
+	color: #666;
+	margin: 0 0 30px 0;
+	letter-spacing: 4px;
+	font: normal 26px/1 Verdana, Helvetica;
+	position: relative;
+}
+
+h1:after, h1:before
+{
+    background-color: #777;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 15px;
+    width: 100px;   
+}
+
+
+h1:before {
+	background-image: -webkit-gradient(linear, right top, left top, from(#777), to(#fff));
+	background-image: -webkit-linear-gradient(right, #777, #fff);
+	background-image: -moz-linear-gradient(right, #777, #fff);
+	background-image: -ms-linear-gradient(right, #777, #fff);
+	background-image: -o-linear-gradient(right, #777, #fff);
+	background-image: linear-gradient(right, #777, #fff);
+	left: 0;
+}
+
+h1:after {
+	background-image: -webkit-gradient(linear, left top, right top, from(#777), to(#fff));
+	background-image: -webkit-linear-gradient(left, #777, #fff);
+	background-image: -moz-linear-gradient(left, #777, #fff);
+	background-image: -ms-linear-gradient(left, #777, #fff);
+	background-image: -o-linear-gradient(left, #777, #fff);
+	background-image: linear-gradient(left, #777, #fff);
+	right: 0;
+}
+
+
+input:not([type=file]):not([type=submit]),textarea{
+	-webkit-appearance:none;
+	-ms-appearance:none;
+	resize:none;
+	-webkit-box-sizing:border-box;
+	width: 200px;
+	height: 24px;
+	border : none;
+	outline: none;
+	border-bottom: 1px solid #999;
+	padding: 0 5px;
+	background: #fefefe;
+}
+
+input:not([type=file]):not([type=submit]):invalid,textarea:invalid{
+	background: #ffe9e9;
+}
+
+
+
+textarea{
+	height: 64px;
+	display: inline-block;
+	padding: 5px;
+}
+
+label{
+	display: inline-block;
+	vertical-align: top;
+}
+
+form > div{
+	margin-bottom: 15px; 
+}
+
+.custom-file-input{
+	width: 106px;
+	outline: none;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: '点击上传截图...';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+	box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+form{
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(top, #fff, #eee);
+    background-image: linear-gradient(top, #fff, #eee);  
+    min-height: 240px;
+    width: 400px;
+    margin: 20px auto 0;
+    padding: 30px;
+    position: relative;
+    z-index: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow:
+          0 0 2px rgba(0, 0, 0, 0.2),  
+          0 1px 1px rgba(0, 0, 0, .2),
+          0 3px 0 #fff,
+          0 4px 0 rgba(0, 0, 0, .2),
+          0 6px 0 #fff,  
+          0 7px 0 rgba(0, 0, 0, .2);
+}
+
+
+form:before{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 1px dashed #ccc;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    -moz-box-shadow: 0 0 0 1px #fff;
+    -webkit-box-shadow: 0 0 0 1px #fff;
+    box-shadow: 0 0 0 1px #fff;
+}
+
+.copy{
+	font-size: 12px;
+	line-height: 24px;
+	text-align: center;
+	color: #222;
+	margin-top: 10px;
+	text-shadow:0 1px 1px #fff;
+}
+
+input[type=submit]{
+    background-color: #ffb94b;
+    background-image: -webkit-linear-gradient(top, #fddb6f, #ffb94b);
+    background-image: linear-gradient(top, #fddb6f, #ffb94b);
+    
+    border-radius: 3px;
+    
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    
+   	box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+    
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d69e31 #e3a037 #d5982d #e3a037;
+
+    height: 35px;
+    padding: 0;
+    width: 120px;
+    cursor: pointer;
+    color: #8f5a0a;
+    font-size: 16px;
+    outline: none;
+}
+
+
+input[type=submit]:hover,input[type=submit]:focus
+{		
+    background-color: #fddb6f;
+    background-image: -webkit-linear-gradient(top, #ffb94b, #fddb6f);
+    background-image: linear-gradient(top, #ffb94b, #fddb6f);
+}	
+
+input[type=submit]:active
+{		   
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
+}
+
+
+
+
+
+
+

@@ -1,29 +1,33 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 </head>
+	<link rel="stylesheet" href="/style/bookmark.css">
 	<style>
-		h1{text-align: center;}
-		#bug_form div{margin: 10px 0 0 30px;}
+		#bug_form div{margin: 20px 0 0 30px;}
 		#bug_form div label{width: 80px;display: inline-block;text-align: right;}
 		#submit{margin: 10px 0 0 80px;}
 		#bug_form input{line-height: 18px;}
 	</style>
 <body>
-	<h1>Bug提交:</h1>
-	<form id="bug_form" enctype="multipart/form-data" action="../bugReceiver" method="POST">
-		<div><label for="username">昵称：</label><input id="username" name="username" type="text"></div>
-		<div><label for="email">Email：</label><input id="email" name="email" type="text"></div>
-		<div><label for="bugdetail">bug描述：</label><textarea id="bugdetail" name="bugdetail" type="text"></textarea></div>
-		<div><label for="bugimg">上传截图：</label><input id="bugimg" name="bugimg" type="file"></div>
-		<!-- 浏览器信息 -->
-		<input id="browserinfo" name="browserinfo" type="hidden">
-		<input id="weburl" name="weburl" type="hidden">	
-		<input type="hidden" name="screenwidth" id="screenwidth">
-		<div><input id="submit" type="submit"></div>
-	</form>
+	<div class="bookContent">
+		<form id="bug_form" enctype="multipart/form-data" action="../bugReceiver" method="POST">
+			<h1>提交1个问题</h1>
+			<div><label for="username">昵称：</label><input id="username" name="username" type="text" required=""></div>
+			<div><label for="email">Email：</label><input id="email" name="email" type="email" required></div>
+			<div><label for="bugdetail">bug描述：</label><textarea id="bugdetail" name="bugdetail" type="text" required></textarea></div>
+			<div><label for="bugimg">上传截图：</label><input id="bugimg" class="custom-file-input" name="bugimg" type="file" accept="image/*"></div>
+			<!-- 浏览器信息 -->
+			<input id="browserinfo" name="browserinfo" type="hidden">
+			<input id="weburl" name="weburl" type="hidden">	
+			<input type="hidden" name="screenwidth" id="screenwidth">
+			<div><input id="submit" type="submit" value="提交"></div>
+		</form>
+		<div class="copy">&copy;1号店 TVVT </div>
+	</div>
+
 </body>
 	<!-- todo 验证表单 -->
 	<script type="text/javascript">
