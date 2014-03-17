@@ -74,15 +74,15 @@ exports.getBugsByPageId = function(req,res){
 
 	var pageId = req.body.pageId,
 		pageSize = req.body.pageSize,
-		statusId = req.body.statusId,
+		statusId = Number(req.body.statusId),
 		titleName = 'status';
 	switch(statusId){
-		case '0'://全部
+		case 0://全部
 			Model_bbu.getBugsByPageId(pageId,pageSize,function(data){
 				res.send(data);
 			})
 			break;
-		case '4'://搜索
+		case 4://搜索
 			break;
 		default:
 			Model_bbu.getBugsByPageIdAndStatusId(pageId,pageSize,titleName,statusId,function(data){
