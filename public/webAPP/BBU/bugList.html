@@ -6,12 +6,14 @@
 			</nav>
 			<ul id="bbu-list">
 				<li  ng-repeat="li in getBugs()">
-					<a ng-href="http://localhost:4000/webAPP/BBU/index.html#/b{{li.id}}">
+					
 						<div class="bbu-info">
 							<div class="bug-list-detail">
-								<span ng-bind="li.bugdetail"></span><span class="bug-list-status" ng-bind="li.status"></span>
+								<a class="goto-detail" ng-href="http://localhost:4000/webAPP/BBU/index.html#/b{{li.id}}">
+								<span ng-bind="li.bugdetail"></span>
+								</a><span class="bug-list-status" ng-bind="li.status"></span><span ng-click="fixBug($index)" class="bug-list-status-todo" ng-bind="li.todoText"></span>
 							</div>
-					</a>
+					
 							<div><span>BUG环境：<span><span class="browser-info" ng-bind="li.browserinfo"></span>
 								</div>
 							<div><span>屏幕宽度(px)：<span><span class="screenwidth" ng-bind="li.screenwidth"></span>

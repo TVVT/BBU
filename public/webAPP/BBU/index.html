@@ -6,15 +6,22 @@
 		<link rel="stylesheet" href="http://localhost:4000/style/base.css">
 	</head>
 	<body>
-		<div id="header">
+		<div id="header" ng-controller="HeaderCtrl as header">
 			<div class="container">
 				<input type="text" placeholder="搜索bug的id（暂时未实现）" class="search">
 				<span class="title">BBU列表</span>
 			</div>
 			<div class="user-box">
-				<a href="http://localhost:4000/login">登录</a>
-				<a href="http://localhost:4000/reg">注册</a>
+				<span ng-click="btn1()" ng-bind="btnCtrl1()"></span>
+				<span ng-click="btn2()" ng-bind="btnCtrl2()"></span>
+				<div id="login-box" ng-show="loginShow">
+					<div><label for="useremail">用户名：</label><input id="useremail" type="email" name="useremail" required></div>
+					<div><label for="password">密码：</label><input type="password" id="password" name="password" required></div>
+					<div><button type="submit" ng-click="doLogin()">登录</button>
+				</div>
+				<div id="reg-box" ng-show="regShow"></div>
 			</div>
+
 		</div>
 		<section id="container" ng-view>
 		</section>	

@@ -2,6 +2,7 @@ var Model_bbu = require('../models/bbu');
 var settings = require('../settings');
 var fs = require('fs');
 var path = require('path');
+var result  = {};
 
 //列表首页 render使用angularjs 接口提供数据
 exports.BBUList = function(req, res) {
@@ -96,6 +97,21 @@ exports.getBugById = function(req,res){
 	var bugId = req.body.bugId;
 	Model_bbu.getBugById(bugId,function(data){
 		res.send(data);
+	})
+}
+
+//API 更改bug状态 同时写入解决者id
+exports.changeBugStatus = function(req,res){
+	var bugId = req.body.bugId;
+	var uid = req.body.uid;
+	var status = req.body.status;
+	Model_bbu.changeBugStatus(bugId,uid,status,function(data){
+		if (data) {
+			result.res_code = 1;
+		}else{
+			result.res_code = 0;
+		}
+		res.send(result);
 	})
 }
 

@@ -49,6 +49,7 @@ app.post('/getBugsByPageId',bbu.getBugsByPageId);
 app.post('/getBugById',bbu.getBugById);
 app.post('/getLogin',user.getLogin);
 app.post('/getReg',user.getReg);
+app.post('/changeBugStatus',bbu.changeBugStatus);
 
 //404页面 希望能用服务器去解决这件事情 因为这里还把css js等静态文件过滤了一下 不好不好
 // app.get('/*',common.pageNotFound);

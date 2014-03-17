@@ -19,18 +19,21 @@ a{cursor: pointer;}
 #header .container .title{font-weight: bold;font-size: 18px;margin-left: -200px;line-height: 40px;}
 #header .container .search{width: 200px;line-height: 20px;float: left;height: 26px;border-radius: 15px;outline: none;border: none;text-indent: 10px;margin-top:5px;margin-left: 10px; }
 #header .user-box{float: right;display: inline-block; height: 40px;}
-#header .user-box a{display: inline-block; line-height: 40px;font-weight: normal;font-size:12px;padding: 0 10px;}
-#header .user-box a:hover{background-color: #000;}
-/*2c4762*/
-#container{width: 1000px;margin: 20px auto; background: rgba(44,71,98,1);padding: 10px;border-radius: 10px;font-weight: normal;font-size: 14px;}
-
-
+#header .user-box span{display: inline-block; line-height: 40px;font-weight: normal;font-size:12px;padding: 0 10px;}
+#header .user-box span:hover{background-color: #000;cursor: pointer;}
+#container{width: 1000px;margin: 20px auto; background: rgba(44,71,98,1);padding: 10px;border-radius: 10px;font-weight: normal;font-size: 14px;text-align: left;}
+#login-box{width: 300px;height: 100px;background-color: #000;position: absolute;right: 0;}
+#reg-box{width: 300px;height: 100px;background-color: #000;position: absolute;right: 0;}
+#login-box label{width: 80px;display: inline-block;}
+#login-box div{margin-top: 5px;}
 
 /* list */
 #bbu-list li{margin-bottom: 20px;}
+#bbu-list a.goto-detail{color: #444;}
 .bbu-info .bug-list-detail{background-color:#fff;border-radius: 6px;margin-bottom:4px; padding: 10px 10px 10px 10px;color: #444;}
 .bug-list-time{margin-left: 40px;}
 .bug-list-status{float: right;font-size: 12px;}
+.bug-list-status-todo{float: right;font-size: 12px;cursor: pointer;margin-right: 10px;}
 
 /* bug detail */
 .bug-img{max-width: 1000px;border-radius: 8px;margin-top:10px; }
@@ -39,3 +42,4 @@ a{cursor: pointer;}
 .bug-status{float: right;font-size: 12px;}
 .bug-detail-nav{}
 .bug-detail-nav a{display: inline-block; line-height: 50px;margin-right: 20px;}
+.bug-status-todo{float: right;font-size: 12px;cursor: pointer;margin-right: 10px;}
