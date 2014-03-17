@@ -6,13 +6,17 @@
 	<link rel="stylesheet" href="<%=baseUrl%>style/base.css">
 </head>
 <body>
-	<form action="" method="POST">
-		<input type="text" name="useremail">
-		<input type="password" name="password">
-		<input type="password" name="repassword">
-		<input type="text" name="auth">
-		<input type="submit">
-	</form>
+	<div id="reg-wrapper">
+		<h1 class="title">注册BBU</h1>
+		<form action="/getReg" method="POST">
+			<div><label for="useremail">邮箱：</label><input id="useremail" type="text" name="useremail"></div>
+			<div><label for="username">用户名：</label><input id="username" type="text" name="username"></div>
+			<div><label for="password">密码：</label><input id="password" type="password" name="password"></div>
+			<div><label for="repassword">重复密码：</label><input id="repassword" type="password" name="repassword"></div>
+			<div><label for="auth">邀请码：</label><input id="auth" type="text" name="auth"></div>
+			<div><input class="submit" type="submit" value="注册"></div>
+		</form>
+	</div>
 </body>
 </html>
 

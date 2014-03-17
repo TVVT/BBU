@@ -230,7 +230,7 @@
 					localStorage.removeItem('id');
 					isLogin = false;
 				} else {
-
+					window.location.href = "http://192.168.112.94:4000/reg";
 				}
 			}
 

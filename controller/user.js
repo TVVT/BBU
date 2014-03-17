@@ -1,6 +1,8 @@
 var Model_user = require('../models/user');
 var settings = require('../settings');
-var userData = {};
+var userData = {
+	res_code:0
+};
 
 exports.logIn = function(req, res) {
 	var renderData = {
@@ -39,5 +41,44 @@ exports.getLogin = function(req, res) {
 
 //API 注册
 exports.getReg = function(req, res) {
+	var username = req.body.username;
+	var useremail = req.body.useremail;
+	var password = req.body.password;
+	var repassword = req.body.repassword;
+	var auth = req.body.auth;
+
+	if (auth != "ued") {
+		userData.msg = "邀请码不正确！";
+		res.send(userData);
+		return false;
+	};
+
+	if (password != repassword) {
+		userData.msg = "两次密码输入不一致！";
+		res.send(userData);
+		return false;
+	};
+
+	if (username && useremail && password && auth) {
+		var user = {
+			username:username,
+			useremail:useremail,
+			password:password,
+			type:1
+		}
+		var newUser = new Model_user(user);
+		newUser.create(function(data){
+			if (data.res_code) {
+				userData.msg = '注册成功！';
+			}else{
+				userData.msg = '注册失败，邮箱已存在！';
+			}
+			res.send(userData);
+		})
+	}else{
+		userData.msg = "信息不完整！";
+		res.send(userData);
+		return false;
+	}
 
 }
