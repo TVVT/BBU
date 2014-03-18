@@ -1,5 +1,6 @@
 public/media
 node_modules/
+nohup.out
 
 #tmpfiles
 *.DS_Store

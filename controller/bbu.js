@@ -160,7 +160,7 @@ var sendEmail = function(target, msg) {
 	}
 	server.send(message, function(err, message) {
 		if (err) {
-			throw(err);
+			console.log(err);
 		} else {
 			console.log(message);
 		}
