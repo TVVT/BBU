@@ -1,8 +1,6 @@
 var Model_user = require('../models/user');
 var settings = require('../settings');
-var userData = {
-	res_code:0
-};
+
 
 exports.logIn = function(req, res) {
 	var renderData = {
@@ -46,6 +44,9 @@ exports.getReg = function(req, res) {
 	var password = req.body.password;
 	var repassword = req.body.repassword;
 	var auth = req.body.auth;
+	var userData = {
+		res_code:0
+	};
 
 	if (auth != "ued") {
 		userData.msg = "邀请码不正确！";
@@ -72,6 +73,7 @@ exports.getReg = function(req, res) {
 				userData.res_code = 1;
 				userData.msg = '注册成功！';
 			}else{
+				userData.res_code = 0;
 				userData.msg = '注册失败，邮箱已存在！';
 			}
 			res.send(userData);
