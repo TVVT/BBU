@@ -69,6 +69,7 @@ exports.getReg = function(req, res) {
 		var newUser = new Model_user(user);
 		newUser.create(function(data){
 			if (data.res_code) {
+				userData.res_code = 1;
 				userData.msg = '注册成功！';
 			}else{
 				userData.msg = '注册失败，邮箱已存在！';
