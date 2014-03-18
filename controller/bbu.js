@@ -3,6 +3,7 @@ var settings = require('../settings');
 var fs = require('fs');
 var path = require('path');
 var result = {};
+var email = require('emailjs');
 
 //列表首页 render使用angularjs 接口提供数据
 exports.BBUList = function(req, res) {
@@ -105,15 +106,29 @@ exports.changeBugStatus = function(req, res) {
 	var bugId = req.body.bugId;
 	var uid = req.body.uid;
 	var status = req.body.status;
-
 	if (!req.body.uid) {
 		result.res_code = 0;
 		result.msg = "请先登录！";
 		res.send(result);
 	} else {
 		Model_bbu.changeBugStatus(bugId, uid, status, function(data) {
-			if (data) {
+			if (data && data.length>0) {
 				result.res_code = 1;
+				var msg = {
+					title: "一号店TVVT"
+				}
+				switch (status) {
+					case 2:
+						msg.content = "您提交的bug正在处理中。。。";
+						break;
+					case 3:
+						msg.content = "您提交的bug已处理完毕！";
+						break;
+					default:
+						msg.content = "您提交的bug已处理完毕！";
+				}
+				var target = data[0].email;
+				sendEmail(target,msg);
 			} else {
 				result.res_code = 0;
 			}
@@ -121,6 +136,35 @@ exports.changeBugStatus = function(req, res) {
 		})
 	}
 
+
+}
+
+var sendEmail = function(target, msg) {
+	var from = {
+		username: "TVVT",
+		userEmail: "yhdtvvt@163.com",
+		password: "tvvtyhd"
+	}
+	var host = "smtp.163.com";
+	var server = email.server.connect({
+		user: from.userEmail,
+		password: from.password,
+		host: host,
+		ssl: true
+	});
+	var message = {
+		text: msg.content,
+		from: from.username + " <" + from.userEmail + ">",
+		to: target,
+		subject: msg.title
+	}
+	server.send(message, function(err, message) {
+		if (err) {
+			throw(err);
+		} else {
+			console.log(message);
+		}
+	});
 
 }
 

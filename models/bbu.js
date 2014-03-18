@@ -59,9 +59,11 @@ Bug.getBugsByPageIdAndStatusId = function(pageId,pageSize,title,statusId,callbac
 
 Bug.changeBugStatus = function(bugId,uid,statusId,callback){
 	var query = 'UPDATE '+table_name+' SET status='+statusId+',uid='+uid+' WHERE id='+bugId;
-	console.log(query);
 	db.query(query,function(data){
-		console.log(data);
-		return callback(data);
-	})
+		if (data.affectedRows>0) {
+			db.select_by_id(bugId,table_name,function(d){
+				return callback(d);
+			});
+		};
+	});
 }
