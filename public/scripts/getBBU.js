@@ -19,8 +19,8 @@
 	}
 
 	i = document.createElement('iframe');
-	i.setAttribute('width', '420');
-	i.setAttribute('height', '280');
+	i.setAttribute('width', '470');
+	i.setAttribute('height', '460');
 	i.setAttribute('autofocus', 'autofocus');
 	i.style.cssText = [
 		''
@@ -67,8 +67,8 @@
 	d = document.createElement('div');
 	d.style.cssText = [
 		 ''
-		 , 'width:420px'
-		 , 'height:280px'
+		 , 'width:470px'
+		 , 'height:460px'
 		 , 'box-shadow:0 1px 4px #999'
 		 , 'position:fixed'
 		 , 'top:0'

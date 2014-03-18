@@ -2,7 +2,7 @@ var Model_bbu = require('../models/bbu');
 var settings = require('../settings');
 var fs = require('fs');
 var path = require('path');
-var result  = {};
+var result = {};
 
 //列表首页 render使用angularjs 接口提供数据
 exports.BBUList = function(req, res) {
@@ -35,11 +35,11 @@ exports.bugReceiver = function(req, res) {
 			var picPath = './public/media/bbu/' + date.getFullYear().toString() + '/' + (date.getMonth() + 1).toString() + '/';
 			var targetPath = picPath + fileName;
 
-			fs.link(tmpPath,targetPath,function(err){
+			fs.link(tmpPath, targetPath, function(err) {
 				if (err) throw err;
 			})
 
-		}else{
+		} else {
 			res.send("上传文件格式不正确！");
 			return;
 		}
@@ -47,89 +47,95 @@ exports.bugReceiver = function(req, res) {
 
 	if (req.body.username && req.body.bugdetail) {
 		var bugData = {
-			userName:req.body.username,
-			bugDetail:req.body.bugdetail,
-			picUrl:targetPath?targetPath.replace(/.\/public\//,""):'',
-			browserInfo:req.body.browserinfo,
-			webUrl:req.body.weburl,
-			email:req.body.email,
-			screenwidth:req.body.screenwidth,
-			status:1,//1代表未处理 2代表正在处理 3代表处理完毕
-			priority:0//优先级暂时都是0 TODO
+			userName: req.body.username,
+			bugDetail: req.body.bugdetail,
+			picUrl: targetPath ? targetPath.replace(/.\/public\//, "") : '',
+			browserInfo: req.body.browserinfo,
+			webUrl: req.body.weburl,
+			email: req.body.email,
+			screenwidth: req.body.screenwidth,
+			status: 1, //1代表未处理 2代表正在处理 3代表处理完毕
+			priority: 0 //优先级暂时都是0 TODO
 		}
 		var newBug = new Model_bbu(bugData);
-		newBug.create(function(data){
+		newBug.create(function(data) {
 			if (data) {
 				res.send("提交成功！");
 			};
 		});
-	}else{
+	} else {
 		res.send("昵称和bug信息必填！");
 	}
 
 }
 
 //API 返回分页数据
-exports.getBugsByPageId = function(req,res){
+exports.getBugsByPageId = function(req, res) {
 
 	var pageId = req.body.pageId,
 		pageSize = req.body.pageSize,
 		statusId = Number(req.body.statusId),
 		titleName = 'status';
-	switch(statusId){
-		case 0://全部
-			Model_bbu.getBugsByPageId(pageId,pageSize,function(data){
+	switch (statusId) {
+		case 0: //全部
+			Model_bbu.getBugsByPageId(pageId, pageSize, function(data) {
 				res.send(data);
 			})
 			break;
-		case 4://搜索
+		case 4: //搜索
 			break;
 		default:
-			Model_bbu.getBugsByPageIdAndStatusId(pageId,pageSize,titleName,statusId,function(data){
+			Model_bbu.getBugsByPageIdAndStatusId(pageId, pageSize, titleName, statusId, function(data) {
 				res.send(data);
-			})	
+			})
 	}
 
-	
+
 }
 //API 返回bug数据
-exports.getBugById = function(req,res){
+exports.getBugById = function(req, res) {
 	var bugId = req.body.bugId;
-	Model_bbu.getBugById(bugId,function(data){
+	Model_bbu.getBugById(bugId, function(data) {
 		res.send(data);
 	})
 }
 
 //API 更改bug状态 同时写入解决者id
-exports.changeBugStatus = function(req,res){
+exports.changeBugStatus = function(req, res) {
 	var bugId = req.body.bugId;
 	var uid = req.body.uid;
 	var status = req.body.status;
-	Model_bbu.changeBugStatus(bugId,uid,status,function(data){
-		if (data) {
-			result.res_code = 1;
-		}else{
-			result.res_code = 0;
-		}
+
+	if (!req.body.uid) {
+		result.res_code = 0;
+		result.msg = "请先登录！";
 		res.send(result);
-	})
+	} else {
+		Model_bbu.changeBugStatus(bugId, uid, status, function(data) {
+			if (data) {
+				result.res_code = 1;
+			} else {
+				result.res_code = 0;
+			}
+			res.send(result);
+		})
+	}
+
+
 }
 
 //检查路径是否存在 不存在的话就新建一个 仅仅适用于本项目～
-var checkDir = function(){
+var checkDir = function() {
 	var rootPath = './public/media/bbu',
 		date = new Date();
 	if (fs.existsSync(rootPath + '/' + date.getFullYear().toString() + '/' + (date.getMonth() + 1).toString())) {
 		return;
-	}else{
+	} else {
 		if (fs.existsSync(rootPath + '/' + date.getFullYear().toString())) {
 			fs.mkdirSync(rootPath + '/' + date.getFullYear().toString() + '/' + (date.getMonth() + 1).toString());
-		}else{
+		} else {
 			fs.mkdirSync(rootPath + '/' + date.getFullYear().toString());
 			fs.mkdirSync(rootPath + '/' + date.getFullYear().toString + '/' + (date.getMonth() + 1).toString());
 		}
 	}
 }
-
-
-

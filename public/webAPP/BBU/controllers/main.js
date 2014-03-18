@@ -119,7 +119,7 @@
 								break;
 						}
 					} else {
-						alert("请求异常！");
+						alert(data.msg);
 					}
 				}).error(function(data, status, headers, config) {
 					throw "访问数据错误！";
@@ -277,7 +277,7 @@
 					controller: 'ListCtrl'
 				})
 				.otherwise({
-					redirectTo: '/s1/p1'
+					redirectTo: '/s0/p1'
 				});
 		}
 	])
