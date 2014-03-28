@@ -31,12 +31,13 @@ a{cursor: pointer;}
 #header .container .add-bookmark .bookmark-tip{font-size:12px;color: #f4f4f4;}
 
 /* list */
+#bbu-list .info-bar-wrapper{display: flex;background-color:#fff;border-radius: 6px;}
 #bbu-list li{margin-bottom: 20px;}
-#bbu-list a.goto-detail{color: #444;}
-.bbu-info .bug-list-detail{background-color:#fff;border-radius: 6px;margin-bottom:4px; padding: 10px 10px 10px 10px;color: #444;}
+#bbu-list a.goto-detail{color: #444;flex:1;}
+.bbu-info .bug-list-detail{margin-bottom:4px; padding: 10px 10px 10px 10px;color: #444;}
 .bug-list-time{margin-left: 40px;}
 .bug-list-status{float: right;font-size: 12px;}
-.bug-list-status-todo{float: right;font-size: 12px;cursor: pointer;margin-right: 10px;}
+.bug-list-status-todo{font-size: 12px;cursor: pointer;margin-right: 10px;width: 30px;line-height: 40px;color:#444;}
 
 /* bug detail */
 .bug-img{max-width: 1000px;border-radius: 8px;margin-top:10px; }

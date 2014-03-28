@@ -8,14 +8,15 @@
 				<li  ng-repeat="li in getBugs()">
 					
 						<div class="bbu-info">
-							<div class="bug-list-detail">
+							<div class="info-bar-wrapper">
 								<a class="goto-detail" ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/b{{li.id}}">
-								<span ng-bind="li.bugdetail"></span>
+									<div class="bug-list-detail">
+										<span ng-bind="li.bugdetail"></span>
+										<!-- <span class="bug-list-status" ng-bind="li.status"></span> -->
+									</div>
 								</a>
-								<!-- <span class="bug-list-status" ng-bind="li.status"></span> -->
 								<span ng-show="isLogin" ng-click="fixBug($index)" class="bug-list-status-todo" ng-bind="li.todoText"></span>
 							</div>
-					
 							<div><span>BUG环境：<span><span class="browser-info" ng-bind="li.browserinfo"></span>
 								</div>
 							<div><span>屏幕宽度(px)：<span><span class="screenwidth" ng-bind="li.screenwidth"></span>
