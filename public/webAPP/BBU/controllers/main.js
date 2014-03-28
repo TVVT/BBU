@@ -43,6 +43,7 @@
 		function ListCtrl($scope, bugService, $routeParams, $http) {
 			$scope.pageId = $routeParams.pid;
 			$scope.statusId = $routeParams.sid;
+			$scope.statusId = 1;//设置所有都指向未处理的bugs 其他状态的bug不再出现
 			$scope.getBugsFromRemote = function(pageId, sid) {
 				$http({
 					method: 'POST',
@@ -58,7 +59,8 @@
 						switch (data[i].status) {
 							case 1:
 								data[i].status = "未处理";
-								data[i].todoText = "开始处理";
+								// data[i].todoText = "开始处理";
+								data[i].todoText = "删除";//这里改为删除
 								break;
 							case 2:
 								data[i].status = "正在处理";
@@ -97,6 +99,9 @@
 					case '重新开始处理':
 						statusId = 2;
 						break;
+					case '删除':
+						statusId = 3;
+						break;
 				}
 				$http({
 					method: 'POST',
@@ -108,16 +113,19 @@
 					}
 				}).success(function(data, status, headers, config) {
 					if (data.res_code) {
-						switch (statusId) {
-							case 2:
-								bugService.bugs[index].todoText = "结束处理";
-								bugService.bugs[index].status = "正在处理";
-								break;
-							case 3:
-								bugService.bugs[index].todoText = "重新开始处理";
-								bugService.bugs[index].status = "已处理";
-								break;
-						}
+						// switch (statusId) {
+						// 	case 2:
+						// 		bugService.bugs[index].todoText = "结束处理";
+						// 		bugService.bugs[index].status = "正在处理";
+						// 		break;
+						// 	case 3:
+						// 		bugService.bugs[index].todoText = "重新开始处理";
+						// 		bugService.bugs[index].status = "已处理";
+						// 		break;
+						// }
+
+						//假设操作成功！那么删除这一条信息 其实后台并未删除 哈哈哈哈
+						bugService.bugs.splice(index,1);
 					} else {
 						alert(data.msg);
 					}
@@ -125,6 +133,8 @@
 					throw "访问数据错误！";
 				});
 			}
+
+			$scope.isLogin = isLogin;
 
 			$scope.nextPage = 's' + $scope.statusId + '/p' + (parseInt($scope.pageId) + 1);
 			$scope.prevPage = 's' + $scope.statusId + '/p' + (parseInt($scope.pageId) - 1);
@@ -277,7 +287,7 @@
 					controller: 'ListCtrl'
 				})
 				.otherwise({
-					redirectTo: '/s0/p1'
+					redirectTo: '/s1/p1'
 				});
 		}
 	])

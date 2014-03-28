@@ -61,7 +61,7 @@ exports.bugReceiver = function(req, res) {
 		var newBug = new Model_bbu(bugData);
 		newBug.create(function(data) {
 			if (data) {
-				res.send("提交成功！");
+				res.send('提交成功！<br> Bug地址:<br><a href='+settings.baseUrl+'webAPP/BBU/index.html#/b'+data.insertId+' target="_blank">'+settings.baseUrl+'webAPP/BBU/index.html#/b'+data.insertId);
 			};
 		});
 	} else {
@@ -127,8 +127,10 @@ exports.changeBugStatus = function(req, res) {
 					default:
 						msg.content = "您提交的bug已处理完毕！";
 				}
-				var target = data[0].email;
-				sendEmail(target,msg);
+
+				//注释掉邮箱功能
+				// var target = data[0].email;
+				// sendEmail(target,msg);
 			} else {
 				result.res_code = 0;
 			}

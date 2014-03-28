@@ -15,17 +15,20 @@ a{cursor: pointer;}
 /* 公共样式 */
 #title{text-align: center;font-size: 50px;font-weight: bold;line-height: 80px;}
 #header{height: 40px;background-color: #2c4762;text-align: center;}
-#header .container{width: 1000px;height: 40px;display: inline-block;}
-#header .container .title{font-weight: bold;font-size: 18px;margin-left: -200px;line-height: 40px;}
+#header .container{width: 1000px;height: 40px;margin: 0 auto;}
+#header .container .title{font-weight: bold;font-size: 18px;line-height: 40px;float: left;}
 #header .container .search{width: 200px;line-height: 20px;float: left;height: 26px;border-radius: 15px;outline: none;border: none;text-indent: 10px;margin-top:5px;margin-left: 10px; }
-#header .user-box{float: right;display: inline-block; height: 40px;}
+#header .user-box{height: 40px;position: absolute;top: 0;right: 0;}
 #header .user-box span{display: inline-block; line-height: 40px;font-weight: normal;font-size:12px;padding: 0 10px;}
-#header .user-box span:hover{background-color: #000;cursor: pointer;}
+#header .user-box span:hover{background-color: #3a5976;cursor: pointer;}
 #container{width: 1000px;margin: 20px auto; background: rgba(44,71,98,1);padding: 10px;border-radius: 10px;font-weight: normal;font-size: 14px;text-align: left;}
 #login-box{width: 300px;height: 100px;background-color: #000;position: absolute;right: 0;}
 #reg-box{width: 300px;height: 100px;background-color: #000;position: absolute;right: 0;}
 #login-box label{width: 80px;display: inline-block;}
 #login-box div{margin-top: 5px;}
+#header .container .add-bookmark{float: right;}
+#header .container .add-bookmark .bookmark{display: inline-block;background-color: #3a5976;padding: 2px 6px 2px 6px;border-radius: 15px;margin-top: 8px;}
+#header .container .add-bookmark .bookmark-tip{font-size:12px;color: #f4f4f4;}
 
 /* list */
 #bbu-list li{margin-bottom: 20px;}

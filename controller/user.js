@@ -20,20 +20,35 @@ exports.reg = function(req, res) {
 exports.getLogin = function(req, res) {
 	var useremail = req.body.useremail;
 	var password = req.body.password;
-	Model_user.user_login(useremail, password, function(data) {
-		if (!data.length) {
-			userData.res_code = 0;
-		} else {
-			userData = {
-				'res_code':1,
-				'id': data[0].id,
-				'username': data[0].username,
-				'useremail': data[0].useremail,
-				'type': data[0].type
-			};
-		}
-		res.send(userData);
-	})
+	var userData = {};
+	//目前只有我一个管理员 因此所有bug只有我能删除 这里做个假的服务
+	if (useremail == 'kevin14@me.com' && password == '19890812') {
+		userData = {
+			'res_code': 1,
+			'id': 1,
+			'username': 'kevin14',
+			'useremail': 'kevin14@me.com',
+			'type': 1
+		};
+		
+	}else{
+		userData.res_code = 0;
+	}
+	res.send(userData);
+	// Model_user.user_login(useremail, password, function(data) {
+	// 	if (!data.length) {
+	// 		userData.res_code = 0;
+	// 	} else {
+	// 		userData = {
+	// 			'res_code': 1,
+	// 			'id': data[0].id,
+	// 			'username': data[0].username,
+	// 			'useremail': data[0].useremail,
+	// 			'type': data[0].type
+	// 		};
+	// 	}
+	// 	res.send(userData);
+	// })
 
 }
 
@@ -45,7 +60,7 @@ exports.getReg = function(req, res) {
 	var repassword = req.body.repassword;
 	var auth = req.body.auth;
 	var userData = {
-		res_code:0
+		res_code: 0
 	};
 
 	if (auth != "ued") {
@@ -62,23 +77,23 @@ exports.getReg = function(req, res) {
 
 	if (username && useremail && password && auth) {
 		var user = {
-			username:username,
-			useremail:useremail,
-			password:password,
-			type:1
+			username: username,
+			useremail: useremail,
+			password: password,
+			type: 1
 		}
 		var newUser = new Model_user(user);
-		newUser.create(function(data){
+		newUser.create(function(data) {
 			if (data.res_code) {
 				userData.res_code = 1;
 				userData.msg = '注册成功！';
-			}else{
+			} else {
 				userData.res_code = 0;
 				userData.msg = '注册失败，邮箱已存在！';
 			}
 			res.send(userData);
 		})
-	}else{
+	} else {
 		userData.msg = "信息不完整！";
 		res.send(userData);
 		return false;
