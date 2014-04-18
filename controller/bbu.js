@@ -25,6 +25,7 @@ exports.bugDetail = function(req, res) {
 
 //收集bug信息 存入数据库
 exports.bugReceiver = function(req, res) {
+	console.log(req);
 	console.log(req.files.bugimg.type);
 	if (req.files.bugimg.name) {
 		checkDir();

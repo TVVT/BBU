@@ -184,6 +184,7 @@
 							break;
 					}
 					bugService.bug = data[0];
+					bugService.bug.hasImg = bugService.bug.picurl === ''?false:true;
 				}).error(function(data, status, headers, config) {
 					throw "访问数据错误！";
 				});
@@ -240,7 +241,7 @@
 					localStorage.removeItem('id');
 					isLogin = false;
 				} else {
-					window.location.href = "http://192.168.112.94:4000/reg";
+					window.location.href = "http://localhost:4000/reg";
 				}
 			}
 
