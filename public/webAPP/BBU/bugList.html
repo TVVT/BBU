@@ -1,15 +1,15 @@
 <!-- 			<nav class="bug-detail-nav">
-				<a ng-href="http://http://192.168.112.94:4000/webAPP/BBU/index.html#/s0/p1">全部</a>
-				<a ng-href="http://http://192.168.112.94:4000/webAPP/BBU/index.html#/s1/p1">未处理</a>
-				<a ng-href="http://http://192.168.112.94:4000/webAPP/BBU/index.html#/s2/p1">正在处理</a>
-				<a ng-href="http://http://192.168.112.94:4000/webAPP/BBU/index.html#/s3/p1">已处理</a>
+				<a ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/s0/p1">全部</a>
+				<a ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/s1/p1">未处理</a>
+				<a ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/s2/p1">正在处理</a>
+				<a ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/s3/p1">已处理</a>
 			</nav> -->
 			<ul id="bbu-list">
 				<li  ng-repeat="li in getBugs()">
 					
 						<div class="bbu-info">
 							<div class="info-bar-wrapper">
-								<a class="goto-detail" ng-href="http://http://192.168.112.94:4000/webAPP/BBU/index.html#/b{{li.id}}">
+								<a class="goto-detail" ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/b{{li.id}}">
 									<div class="bug-list-detail">
 										<span ng-bind="li.bugdetail"></span>
 										<!-- <span class="bug-list-status" ng-bind="li.status"></span> -->
@@ -27,6 +27,6 @@
 						</div>
 				</li>
 			</ul>
-			<a id="next" ng-href="http://http://192.168.112.94:4000/webAPP/BBU/index.html#/{{prevPage}}">上一页</a>
-			<a id="next" ng-href="http://http://192.168.112.94:4000/webAPP/BBU/index.html#/{{nextPage}}">下一页</a>
+			<a id="next" ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/{{prevPage}}">上一页</a>
+			<a id="next" ng-href="http://192.168.112.94:4000/webAPP/BBU/index.html#/{{nextPage}}">下一页</a>
 
