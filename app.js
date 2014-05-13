@@ -45,6 +45,7 @@ app.get('/login',user.logIn);
 app.get('/reg',user.reg);
 
 //APIS
+app.post('/zeroBugReceiver',bbu.zeroBugReceiver);
 app.post('/getBugsByPageId',bbu.getBugsByPageId);
 app.post('/getBugById',bbu.getBugById);
 app.post('/getLogin',user.getLogin);

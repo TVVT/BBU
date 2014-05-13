@@ -1,14 +1,25 @@
 <article>
 
-<p class="bug-detail" ng-bind="bug.bugdetail"></p>
-<div><span>BUG环境：<span><span class="browser-info" ng-bind="bug.browserinfo"></span></div>
-<div><span>屏幕宽度(px)：<span><span class="screenwidth" ng-bind="bug.screenwidth"></span>
-								</div>
-<div><span>BUG地址：<span><a class="web-url" ng-bind="bug.weburl" ng-href="{{bug.weburl}}"></a></div>
-<div>
-	<span>来自：</span>
-	<span class="username" ng-bind="bug.username"></span><span>(</span><span ng-bind="bug.email"></span><span>)</span>
-	<span class="time" ng-bind="bug.ctime"></span>
-</div>
-<img class="bug-img" ng-show="bug.hasImg" ng-src="http://192.168.112.94:4000/{{bug.picurl}}">
+    <p class="bug-detail" ng-bind="bug.bugdetail"></p>
+    <div>
+        <span>BUG环境：</span>
+        <span class="browser-info" ng-bind="bug.browserinfo"></span>
+    </div>
+    <div>
+        <span>屏幕宽度(px)：</span>
+        <span class="screenwidth" ng-bind="bug.screenwidth"></span>
+    </div>
+    <div>
+        <span>BUG地址：</span>
+        <a class="web-url" ng-bind="bug.weburl" ng-href="{{bug.weburl}}"></a>
+    </div>
+    <div>
+        <span>来自：</span>
+        <span class="username" ng-bind="bug.username"></span>
+        <span>(</span>
+        <span ng-bind="bug.email"></span>
+        <span>)</span>
+        <span class="time" ng-bind="bug.ctime"></span>
+    </div>
+    <img class="bug-img" ng-show="bug.hasImg" ng-src="http://192.168.112.94:4000/{{bug.picurl}}">
 </article>
